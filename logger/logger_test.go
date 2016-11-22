@@ -21,7 +21,7 @@ func doLog(prefix string, fn func(Logger)) string {
 
 func TestHeader(t *testing.T) {
 	line := doLog("", func(l Logger) {
-		l.Warn()
+		l.LogWarn()
 	})
 	parts := strings.SplitN(line, " ", 3)
 	if len(parts) != 3 {
@@ -41,7 +41,7 @@ func TestHeader(t *testing.T) {
 
 func TestPrefix(t *testing.T) {
 	line := doLog("myprefix ", func(l Logger) {
-		l.Warn()
+		l.LogWarn()
 	})
 
 	if !strings.HasPrefix(line, "myprefix ") {
@@ -66,7 +66,7 @@ func TestPrefix(t *testing.T) {
 
 func TestDebug(t *testing.T) {
 	line := doLog("", func(l Logger) {
-		l.Debug("1", 2, 3)
+		l.LogDebug("1", 2, 3)
 	})
 
 	parts := strings.SplitN(line, " ", 4)
@@ -82,7 +82,7 @@ func TestDebug(t *testing.T) {
 
 func TestError(t *testing.T) {
 	line := doLog("", func(l Logger) {
-		l.Error("1", 2, 3)
+		l.LogError("1", 2, 3)
 	})
 
 	parts := strings.SplitN(line, " ", 4)
@@ -98,7 +98,7 @@ func TestError(t *testing.T) {
 
 func TestInfo(t *testing.T) {
 	line := doLog("", func(l Logger) {
-		l.Info("1", 2, 3)
+		l.LogInfo("1", 2, 3)
 	})
 
 	parts := strings.SplitN(line, " ", 4)
@@ -114,7 +114,7 @@ func TestInfo(t *testing.T) {
 
 func TestWarn(t *testing.T) {
 	line := doLog("", func(l Logger) {
-		l.Warn("1", 2, 3)
+		l.LogWarn("1", 2, 3)
 	})
 
 	parts := strings.SplitN(line, " ", 4)
